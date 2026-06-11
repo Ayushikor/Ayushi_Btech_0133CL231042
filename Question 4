@@ -1,0 +1,27 @@
+class UnderageError(Exception):
+    pass
+
+class invalidPasswordError(Exception):
+    pass
+
+class AgeVerification:
+    def set_age(self,age):
+        try:
+            if age < 0:
+                raise UnderageError("Age cannot be negative.")
+            elif age < 18:
+                raise UnderageError("You must be at least 18 years old.")
+            else:
+                print("Age is valid.")
+        except ValueError:
+            print("Invalid input. Please enter a valid age.")
+        except UnderageError as e:
+            print("UnderageError:", e)
+        finally:
+            print("Age verification process completed.")
+
+
+a = AgeVerification()
+a.set_age(25)
+a.set_age(15)
+a.set_age(-5)
